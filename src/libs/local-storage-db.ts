@@ -22,7 +22,7 @@ const createTopic = (topic: Topic) => {
 // read all
 const getAllTopics = () => {
   const storedTopics = localStorage.getItem("topics");
-  const topics = storedTopics ? JSON.parse(storedTopics) : [];
+  const topics = storedTopics ? JSON.parse(storedTopics) : null;
 
   return topics;
 };
@@ -30,7 +30,7 @@ const getAllTopics = () => {
 // read one
 const getOneTopicById = (id: string) => {
   const storedTopics = localStorage.getItem("topics");
-  const topic = storedTopics && storedTopics.length > 0 ? JSON.parse(storedTopics).find((item: Topic) => item.id === id) : {};
+  const topic = storedTopics && storedTopics.length > 0 ? JSON.parse(storedTopics).find((item: Topic) => item.id === id) : null;
 
   return topic;
 };

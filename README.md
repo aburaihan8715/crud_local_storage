@@ -22,4 +22,10 @@
 
 ### completed tasks
 
+1. create
+2. getAll
+3. get one by id
+4. delete one by id
+5. delete all
+
 ### pending tasks

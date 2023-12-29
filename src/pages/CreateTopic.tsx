@@ -1,11 +1,25 @@
 import { FormEvent, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { createTopic } from "../libs/local-storage-db";
 
 const CreateTopic = () => {
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descRef = useRef<HTMLInputElement | null>(null);
+  const navigate = useNavigate();
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!titleRef.current?.value || !descRef.current?.value) return alert("Input should not be empty!");
+    const form = e.currentTarget;
+    const newTopic = {
+      id: Date.now().toString(),
+      title: titleRef.current.value,
+      desc: descRef.current.value,
+    };
+    createTopic(newTopic);
+    alert("Topic created");
+    form.reset();
+    navigate("/");
   };
 
   return (
